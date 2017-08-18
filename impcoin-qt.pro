@@ -7,7 +7,7 @@ CONFIG += no_include_pwd
 CONFIG += static
 
 # UNCOMMENT THIS SECTION TO BUILD ON WINDOWS
-# Change paths if needed, these use the ImperialCoin/deps.git repository locations
+# Change paths if needed, these use the skrtskrt/deps.git repository locations
 BOOST_LIB_SUFFIX=-mgw48-mt-s-1_49
 BOOST_INCLUDE_PATH=C:/deps/boost_1_49_0
 BOOST_LIB_PATH=C:/deps/boost_1_49_0/stage/lib
@@ -338,7 +338,7 @@ macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
 macx:ICON = src/qt/res/icons/bitcoin.icns
-macx:TARGET = "ImperialCoin-qt"
+macx:TARGET = "skrtskrt-qt"
 
 # Set libraries and includes at end, to use platform-defined defaults if not overridden
 INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH

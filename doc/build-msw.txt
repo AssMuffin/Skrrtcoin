@@ -8,7 +8,7 @@ cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP
 software written by Thomas Bernard.
 
 
-See readme-qt.rst for instructions on building Imperialcoin-QT, the
+See readme-qt.rst for instructions on building skrtskrt-QT, the
 graphical user interface.
 
 WINDOWS BUILD NOTES
@@ -77,9 +77,9 @@ make -f Makefile.mingw
 mkdir miniupnpc
 cp *.h miniupnpc/
 
-Imperialcoin
+skrtskrt
 -------
 DOS prompt:
-cd \imperialcoin\src
+cd \skrtskrt\src
 mingw32-make -f makefile.mingw
-strip imperialcoind.exe
+strip skrtskrtd.exe

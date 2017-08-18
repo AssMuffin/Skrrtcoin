@@ -53,7 +53,7 @@ map<uint256, map<uint256, CDataStream*> > mapOrphanTransactionsByPrev;
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "ImperialCoin Signed Message:\n";
+const string strMessageMagic = "skrtskrt Signed Message:\n";
 
 double dHashesPerSec;
 int64 nHPSTimerStart;
@@ -831,13 +831,13 @@ uint256 static GetOrphanRoot(const CBlock* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    int64 nSubsidy = 1000 * COIN;
+    int64 nSubsidy = 10 * COIN;
 
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 2 * 24 * 60 * 60; // ImperialCoin: 2 days
-static const int64 nTargetSpacing = 300; // ImperialCoin: 5 minutes
+static const int64 nTargetTimespan = 1 * 24 * 60 * 60; // skrtskrt: 1 days
+static const int64 nTargetSpacing = 1200; // skrtskrt: 20 minutes
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
 // Thanks: Balthazar for suggesting the following fix
@@ -977,7 +977,7 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
         return pindexLast->nBits;
     }
 
-    // Imperialcoin: This fixes an issue where a 51% attack can change difficulty at will.
+    // skrtskrt: This fixes an issue where a 51% attack can change difficulty at will.
     // Go back the full period unless it's the first retarget after genesis. Code courtesy of Art Forz
     int blockstogoback = nInterval-1;
     if ((pindexLast->nHeight+1) != nInterval)
@@ -1252,7 +1252,7 @@ bool CTransaction::ConnectInputs(MapPrevTx inputs,
 {
     // Take over previous transactions' spent pointers
     // fBlock is true when this is called from AcceptBlock when a new best-block is added to the blockchain
-    // fMiner is true when called from the internal ImperialCoin miner
+    // fMiner is true when called from the internal skrtskrt miner
     // ... both are false when called from CTransaction::AcceptToMemoryPool
     if (!IsCoinBase())
     {
@@ -1422,7 +1422,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex)
     // See BIP30 and http://r6.ca/blog/20120206T005236Z.html for more information.
     // This logic is not necessary for memory pool transactions, as AcceptToMemoryPool
     // already refuses previously-known transaction id's entirely.
-    // This rule applies to all blocks whose timestamp is after October 1, 2012, 0:00 IPC.
+    // This rule applies to all blocks whose timestamp is after October 1, 2012, 0:00 SKR.
     int64 nBIP30SwitchTime = 1349049600;
     bool fEnforceBIP30 = (pindex->nTime > nBIP30SwitchTime);
 
@@ -1999,7 +1999,7 @@ bool CheckDiskSpace(uint64 nAdditionalBytes)
         string strMessage = _("Warning: Disk space is low");
         strMiscWarning = strMessage;
         printf("*** %s\n", strMessage.c_str());
-        uiInterface.ThreadSafeMessageBox(strMessage, "ImperialCoin", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
+        uiInterface.ThreadSafeMessageBox(strMessage, "skrtskrt", CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION | CClientUIInterface::MODAL);
         StartShutdown();
         return false;
     }
@@ -2088,13 +2088,13 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1380662526; //epochtime
+        block.nTime    = 1503068400; //epochtime
         block.nBits    = 0x1e0ffff0;
         block.nNonce   = 2967849;
 
         if (fTestNet)
         {
-            block.nTime    = 1380642758;
+            block.nTime    = 1503068400;
             block.nNonce   = 172332;
         }
 
@@ -3508,7 +3508,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey)
                 continue;
 
             // Transaction fee required depends on block size
-            // Imperialcoind: Reduce the exempted free transactions to 500 bytes (from Bitcoin's 3000 bytes)
+            // skrtskrtd: Reduce the exempted free transactions to 500 bytes (from Bitcoin's 3000 bytes)
             bool fAllowFree = (nBlockSize + nTxSize < 1500 || CTransaction::AllowFree(dPriority));
             int64 nMinFee = tx.GetMinFee(nBlockSize, fAllowFree, GMF_BLOCK);
 
@@ -3709,7 +3709,7 @@ void static BitcoinMiner(CWallet *pwallet)
 
         IncrementExtraNonce(pblock.get(), pindexPrev, nExtraNonce);
 
-        printf("Running ImperialcoinMiner with %d transactions in block\n", pblock->vtx.size());
+        printf("Running skrtskrtMiner with %d transactions in block\n", pblock->vtx.size());
 
         //
         // Search

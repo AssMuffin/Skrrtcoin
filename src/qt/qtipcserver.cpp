@@ -8,7 +8,7 @@
 #include "util.h"
 
 #include <boost/date_time/posix_time/posix_time.hpp>
-#include <boost/interprocess/ipc/message_queue.hpp>
+#include <boost/interprocess/SKR/message_queue.hpp>
 #include <boost/version.hpp>
 
 #if defined(WIN32) && (!defined(BOOST_INTERPROCESS_HAS_WINDOWS_KERNEL_BOOTTIME) || !defined(BOOST_INTERPROCESS_HAS_KERNEL_BOOTTIME) || BOOST_VERSION < 104900)
@@ -32,8 +32,8 @@ static void ipcThread(void* pArg)
 {
     IMPLEMENT_RANDOMIZE_STACK(ipcThread(pArg));
 	
-    // Make this thread recognisable as the GUI-IPC thread
-    RenameThread("bitcoin-gui-ipc");
+    // Make this thread recognisable as the GUI-SKR thread
+    RenameThread("bitcoin-gui-SKR");
 	
     try
     {
@@ -85,7 +85,7 @@ void ipcInit()
     try {
         mq = new message_queue(open_or_create, BITCOINURI_QUEUE_NAME, 2, MAX_URI_LENGTH);
 
-        // Make sure we don't lose any ImperialCoin: URIs
+        // Make sure we don't lose any skrtskrt: URIs
         for (int i = 0; i < 2; i++)
         {
             ptime d = boost::posix_time::microsec_clock::universal_time() + millisec(1);

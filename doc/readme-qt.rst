@@ -1,4 +1,4 @@
-Imperialcoin-Qt: Qt4 GUI for Imperialcoin
+skrtskrt-Qt: Qt4 GUI for skrtskrt
 =========================================
 
 Build instructions
@@ -23,9 +23,9 @@ then execute the following:
     qmake
     make
 
-Alternatively, install `Qt Creator`_ and open the `imperialcoin-qt.pro` file.
+Alternatively, install `Qt Creator`_ and open the `skrtskrt-qt.pro` file.
 
-An executable named `imperialcoin-qt` will be built.
+An executable named `skrtskrt-qt` will be built.
 
 .. _`Qt Creator`: http://qt.nokia.com/downloads/
 
@@ -40,7 +40,7 @@ Windows build instructions:
 
 - Copy the contents of the folder "deps" to "X:\\QtSDK\\mingw", replace X:\\ with the location where you installed the Qt SDK. Make sure that the contents of "deps\\include" end up in the current "include" directory.
 
-- Open the imperialcoin-qt.pro file in Qt Creator and build as normal (ctrl-B)
+- Open the skrtskrt-qt.pro file in Qt Creator and build as normal (ctrl-B)
 
 .. _`Qt Windows SDK`: http://qt.nokia.com/downloads/sdk-windows-cpp
 .. _`dependencies archive`: https://download.visucore.com/bitcoin/qtgui_deps_1.zip
@@ -62,7 +62,7 @@ Mac OS X
 	sudo port selfupdate
 	sudo port install boost db48 miniupnpc
 
-- Open the imperialcoin-qt.pro file in Qt Creator and build as normal (cmd-B)
+- Open the skrtskrt-qt.pro file in Qt Creator and build as normal (cmd-B)
 
 .. _`Qt Mac OS X SDK`: http://qt.nokia.com/downloads/sdk-mac-os-cpp
 .. _`MacPorts`: http://www.macports.org/install.php

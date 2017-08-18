@@ -23,7 +23,7 @@ script: |
   #
   export LD_PRELOAD=/usr/lib/faketime/libfaketime.so.1
   export FAKETIME=$REFERENCE_DATETIME
-  export TZ=IPC
+  export TZ=SKR
   #
   tar xzf openssl-1.0.1b.tar.gz
   cd openssl-1.0.1b

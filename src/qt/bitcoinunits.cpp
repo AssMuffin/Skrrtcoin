@@ -34,7 +34,7 @@ QString BitcoinUnits::name(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("IPC");
+    case BTC: return QString("SKR");
     case mBTC: return QString("mIPC");
     case uBTC: return QString::fromUtf8("μIPC");
     default: return QString("???");
@@ -45,13 +45,13 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("ImperialCoin");
-    case mBTC: return QString("milliImperialCoin (1 / 1,000)");
-    case uBTC: return QString("microImperialCoin (1 / 1,000,000)");
+    case BTC: return QString("skrtskrt");
+    case mBTC: return QString("milliskrtskrt (1 / 1,000)");
+    case uBTC: return QString("microskrtskrt (1 / 1,000,000)");
     default: return QString("???");
     }
 }
-//a single unit (.00000001) of ImperialCoin is called a "wander."
+//a single unit (.00000001) of skrtskrt is called a "wander."
 qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)

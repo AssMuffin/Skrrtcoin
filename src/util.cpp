@@ -468,7 +468,7 @@ vector<unsigned char> ParseHex(const string& str)
 
 static void InterpretNegativeSetting(string name, map<string, string>& mapSettingsRet)
 {
-    // interpret -noIPC as -IPC=0 (and -noIPC=0 as -IPC=1) as long as -IPC not set
+    // interpret -noIPC as -SKR=0 (and -noIPC=0 as -SKR=1) as long as -SKR not set
     if (name.find("-no") == 0)
     {
         std::string positive("-");
@@ -512,7 +512,7 @@ void ParseParameters(int argc, const char* const argv[])
     {
         string name = entry.first;
 
-        //  interpret --IPC as -IPC (as long as both are not set)
+        //  interpret --SKR as -SKR (as long as both are not set)
         if (name.find("--") == 0)
         {
             std::string singleDash(name.begin()+1, name.end());
@@ -521,7 +521,7 @@ void ParseParameters(int argc, const char* const argv[])
             name = singleDash;
         }
 
-        // interpret -noIPC as -IPC=0 (and -noIPC=0 as -IPC=1) as long as -IPC not set
+        // interpret -noIPC as -SKR=0 (and -noIPC=0 as -SKR=1) as long as -SKR not set
         InterpretNegativeSetting(name, mapArgs);
     }
 }
@@ -938,7 +938,7 @@ static std::string FormatException(std::exception* pex, const char* pszThread)
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "ImperialCoin";
+    const char* pszModule = "skrtskrt";
 #endif
     if (pex)
         return strprintf(
@@ -974,13 +974,13 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\ImperialCoin
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\ImperialCoin
-    // Mac: ~/Library/Application Support/ImperialCoin
-    // Unix: ~/.ImperialCoin
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\skrtskrt
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\skrtskrt
+    // Mac: ~/Library/Application Support/skrtskrt
+    // Unix: ~/.skrtskrt
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "ImperialCoin";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "skrtskrt";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -992,10 +992,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     fs::create_directory(pathRet);
-    return pathRet / "ImperialCoin";
+    return pathRet / "skrtskrt";
 #else
     // Unix
-    return pathRet / ".ImperialCoin";
+    return pathRet / ".skrtskrt";
 #endif
 #endif
 }
@@ -1037,7 +1037,7 @@ const boost::filesystem::path &GetDataDir(bool fNetSpecific)
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "ImperialCoin.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "skrtskrt.conf"));
     if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir(false) / pathConfigFile;
     return pathConfigFile;
 }
@@ -1047,19 +1047,19 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 {
     boost::filesystem::ifstream streamConfig(GetConfigFile());
     if (!streamConfig.good())
-        return; // No ImperialCoin.conf file is OK
+        return; // No skrtskrt.conf file is OK
 
     set<string> setOptions;
     setOptions.insert("*");
 
     for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it)
     {
-        // Don't overwrite existing settings so command line settings override ImperialCoin.conf
+        // Don't overwrite existing settings so command line settings override skrtskrt.conf
         string strKey = string("-") + it->string_key;
         if (mapSettingsRet.count(strKey) == 0)
         {
             mapSettingsRet[strKey] = it->value[0];
-            // interpret noIPC=1 as IPC=0 (and noIPC=0 as IPC=1) as long as IPC not set)
+            // interpret noIPC=1 as SKR=0 (and noIPC=0 as SKR=1) as long as SKR not set)
             InterpretNegativeSetting(strKey, mapSettingsRet);
         }
         mapMultiSettingsRet[strKey].push_back(it->value[0]);
@@ -1068,7 +1068,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", "ImperialCoin.pid"));
+    boost::filesystem::path pathPidFile(GetArg("-pid", "skrtskrt.pid"));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }
@@ -1208,10 +1208,10 @@ void AddTimeData(const CNetAddr& ip, int64 nTime)
                 if (!fMatch)
                 {
                     fDone = true;
-                    string strMessage = _("Warning: Please check that your computer's date and time are correct.  If your clock is wrong ImperialCoin will not work properly.");
+                    string strMessage = _("Warning: Please check that your computer's date and time are correct.  If your clock is wrong skrtskrt will not work properly.");
                     strMiscWarning = strMessage;
                     printf("*** %s\n", strMessage.c_str());
-                    uiInterface.ThreadSafeMessageBox(strMessage+" ", string("ImperialCoin"), CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION);
+                    uiInterface.ThreadSafeMessageBox(strMessage+" ", string("skrtskrt"), CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION);
                 }
             }
         }

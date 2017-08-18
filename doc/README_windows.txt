@@ -1,4 +1,4 @@
-Imperialcoin 1.3
+skrtskrt 1.3
 
 Copyright (c) 2009-2012 Bitcoin Developers
 Copyright (c) 2011-2012 Litecoin Developers
@@ -11,7 +11,7 @@ cryptographic software written by Eric Young (eay@cryptsoft.com).
 
 Intro
 -----
-Imperialcoin is a free open source peer-to-peer electronic cash system that is
+skrtskrt is a free open source peer-to-peer electronic cash system that is
 completely decentralized, without the need for a central server or trusted
 parties.  Users hold the crypto keys to their own money and transact directly
 with each other, with the help of a P2P network to check for double-spending.
@@ -19,9 +19,9 @@ with each other, with the help of a P2P network to check for double-spending.
 
 Setup
 -----
-Unpack the files into a directory and run imperialcoin-qt.exe.
+Unpack the files into a directory and run skrtskrt-qt.exe.
 
-If you have Microsoft Security Essentials, you need to add imperialcoin-qt.exe to its
+If you have Microsoft Security Essentials, you need to add skrtskrt-qt.exe to its
 "Excluded processes" list.  Microsoft Security Essentials->Settings tab,
 select Excluded processes, press Add, select litecoin-qt.exe, OK, Save changes.
 

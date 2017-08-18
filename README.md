@@ -1,1 +1,1 @@
-ImperialCoin (IPC)
+skrtskrt (SKR)
